@@ -1,8 +1,3 @@
-Here’s a clean and professional `README.md` for your Terraform project, based on the configuration you shared:
-
----
-
-```markdown
 # 🌐 AWS VPC Setup with Terraform
 
 This Terraform configuration sets up basic AWS networking components for an application environment, including:
@@ -38,25 +33,25 @@ This Terraform configuration sets up basic AWS networking components for an appl
 
 ## 📦 Resources Created
 
-| Resource                | Description                                |
-|-------------------------|--------------------------------------------|
-| `aws_vpc`               | Custom VPC                                 |
-| `aws_subnet`            | Public subnet                              |
-| `aws_internet_gateway`  | Internet gateway for outbound traffic      |
-| `aws_default_route_table` | Configured with route to internet gateway |
-| `aws_security_group`    | Allows SSH (port 22) and App (port 8080)   |
+| Resource                   | Description                                 |
+|----------------------------|---------------------------------------------|
+| `aws_vpc`                  | Custom VPC                                  |
+| `aws_subnet`               | Public subnet                               |
+| `aws_internet_gateway`     | Internet gateway for outbound traffic       |
+| `aws_default_route_table`  | Configured with route to internet gateway   |
+| `aws_security_group`       | Allows SSH (port 22) and App (port 8080)    |
 
 ---
 
-## 🧪 Input Variables
+## 🧲 Input Variables
 
-| Variable Name     | Description                              |
-|-------------------|------------------------------------------|
-| `vpc_cidr_block`  | CIDR block for the VPC                   |
-| `subnet_cidr_block` | CIDR block for the subnet              |
-| `avail_zone`      | AWS Availability Zone (e.g., `us-east-1a`) |
-| `env_prefix`      | Prefix for naming resources              |
-| `my_ip`           | Your IP with `/32` (e.g., `1.2.3.4/32`)  |
+| Variable Name       | Description                                    |
+|---------------------|------------------------------------------------|
+| `vpc_cidr_block`    | CIDR block for the VPC                         |
+| `subnet_cidr_block` | CIDR block for the subnet                      |
+| `avail_zone`        | AWS Availability Zone (e.g., `us-east-1a`)     |
+| `env_prefix`        | Prefix for naming resources                    |
+| `my_ip`             | Your IP with `/32` (e.g., `1.2.3.4/32`)        |
 
 > Define these values in a `terraform.tfvars` file or pass them manually during apply.
 
@@ -100,7 +95,7 @@ This Terraform configuration sets up basic AWS networking components for an appl
 
 ---
 
-## 🧼 Cleanup
+## 🫼 Cleanup
 
 To tear down the infrastructure:
 
@@ -114,3 +109,4 @@ terraform destroy
 
 - This project currently uses **local state**. For production-grade setups, consider remote backends like **S3 + DynamoDB** for state locking and collaboration.
 - The route table and association resources are included but commented out for future extension.
+
