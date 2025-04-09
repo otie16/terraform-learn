@@ -96,7 +96,7 @@ This Terraform configuration sets up basic AWS networking components for an appl
 ---
 
 ## 🫼 Cleanup
-
+    
 To tear down the infrastructure:
 
 ```bash
