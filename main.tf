@@ -119,24 +119,13 @@ output "ec2_public_ip" {
 
 # Creating our instance
 resource "aws_instance" "myapp_server" {
-  ami = "ami-00a929b66ed6e0de6"
+  ami = "ami-084568db4383264d4"
   instance_type = var.instance_type
   subnet_id = aws_subnet.myapp_subnet_1.id
   vpc_security_group_ids = [aws_security_group.myapp-sg.id]
   availability_zone = var.avail_zone
   key_name = aws_key_pair.ssh-key.key_name
-  user_data = <<EOF
-                  #!/bin/bash
-                  sudo yum update -y && sudo yum install
-                  sudo apt update
-                  sudo apt install docker.io -y
-                  sudo usermod -aG docker jenkins
-                  sudo usermod -aG docker ec2-user
-                  sudo systemctl restart docker
-                  sudo chmod 777 /var/run/docker.sock 
-                  docker run -p 8080:80 nginx
-                EOF
-                
+  user_data = file("user-data.sh")
   user_data_replace_on_change = true # Destroy and recreate the instance when userdata script is modified
   
   associate_public_ip_address = true
