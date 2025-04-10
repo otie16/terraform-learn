@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "us-east-1"
-}
+
 
 # Creating a VPC
 resource "aws_vpc" "myapp_vpc" {
@@ -130,11 +128,29 @@ resource "aws_instance" "myapp_server" {
   
   associate_public_ip_address = true
 
+#   # Connect to remote server specific to the provisioner
+#   connection {
+#     type = "ssh"
+#     host = self.public_ip
+#     user = "ubuntu"
+#     private_key = file(var.public_key_path)
+#   }
+
+# # Copies the file to the remote server
+# provisioner "file" {
+#   source = "user-data.sh"
+#   destination = "/home/ubuntu/user-data-script-on-ec2.sh"
+# }
+# # Scripts for the instance can be defined here
+# provisioner "remote-exec" {
+#     # inline = ["/home/ubuntu/user-data-script-on-ec2.sh"] # The remote file must exist on the remote server
+#     script = "user-data.sh"
+#   }
+
+  
+
   tags = {
     Name: "myapp-demo-server"
   }
-
-
-
 
 }
